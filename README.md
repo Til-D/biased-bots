@@ -12,7 +12,7 @@ Learn more about the project in the following publications:
 - [Tilman Dingler](https://github.com/Til-D/)
 
 ## Used libraries and utilities
-- [Rasa](http://jquery.com/) ([MIT license](https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt))
+- [Rasa](https://rasa.com/)
 
 ## License
 Biased bots are published under the [MIT license](http://www.opensource.org/licenses/mit-license) and [GPL v3](http://opensource.org/licenses/GPL-3.0).
