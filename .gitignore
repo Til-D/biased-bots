@@ -1,4 +1,5 @@
-.DS_Store
+# File system
+**/.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

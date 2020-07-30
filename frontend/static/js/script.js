@@ -1,4 +1,4 @@
-const BOT_SERVER =  "http://34.87.238.171/"; //'http://localhost:5005/';
+const BOT_SERVER = "http://localhost:5005/"; // "http://115.146.94.173/";
 
 console.log('connecting to: ' + BOT_SERVER);
 
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() { instancesTap.close(); }, 4000);
 
 });
-
 
 //initialization
 $(document).ready(function() {
@@ -26,8 +25,6 @@ $(document).ready(function() {
 
     //initiate the modal for displaying the charts, if you dont have charts, then you comment the below line
     // $('.modal').modal();
-
-
 
     //enable this if u have configured the bot to start the conversation. 
     showBotTyping();
@@ -50,7 +47,6 @@ $(document).ready(function() {
 
     //if you want the bot to start the conversation
     send(action_name);
-
 })
 
 // ========================== restart conversation ========================
@@ -114,8 +110,6 @@ $(".usrInput").on("keyup keypress", function(e) {
 
             $(".chart-container").remove();
             if (typeof modalChart !== 'undefined') { modalChart.destroy(); }
-
-
 
             $(".paginated_cards").remove();
             $(".suggestions").remove();
@@ -231,7 +225,7 @@ function setBotResponse(response) {
         
         hideBotTyping();
         if (response.length < 1) {
-            //if there is no response from Rasa, send  fallback message to the user
+            //if there is no response from Rasa, send fallback message to the user
             var fallbackMsg = "I am facing some issues, please try again later!!!";
 
             var BotResponse = '<img class="botAvatar" src="./static/img/sara_avatar.png"/><p class="botMsg">' + fallbackMsg + '</p><div class="clearfix"></div>';
@@ -255,7 +249,6 @@ function setBotResponse(response) {
                 }
             }
 
-
             for (i = 0; i < response.length; i++) {
 
                 //check if the response contains "text"
@@ -269,7 +262,6 @@ function setBotResponse(response) {
                     var BotResponse = '<div class="singleCard">' + '<img class="imgcard" src="' + response[i].image + '">' + '</div><div class="clearfix">';
                     $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
                 }
-
 
                 //check if the response contains "buttons" 
                 if (response[i].hasOwnProperty("buttons")) {
@@ -373,7 +365,7 @@ function setBotResponse(response) {
                 scrollToSpeechBubble(scrollElementId);
             }
         }
-    }, 500);
+    }, 1000);
 }
 
 //====================================== Toggle chatbot =======================================
@@ -400,8 +392,6 @@ function renderPdfAttachment(data) {
     scrollToBottomOfResults();
 
 }
-
-
 
 //====================================== DropDown ==================================================
 //render the dropdown messageand handle user selection
