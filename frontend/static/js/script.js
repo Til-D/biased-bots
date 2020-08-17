@@ -1,4 +1,4 @@
-const BOT_SERVER = "http://115.146.94.173/";// "http://localhost:5005/";
+const BOT_SERVER = "http://45.113.235.85/"; // "http://115.146.94.173/";// "http://localhost:5005/";
 
 console.log('connecting to: ' + BOT_SERVER);
 
