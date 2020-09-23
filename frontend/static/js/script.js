@@ -34,7 +34,7 @@ $(document).ready(function() {
     $(".widget").toggle();
 
     //global variables
-    action_name = "/greet";
+    action_name = "/aff_action_greet"; // free_speech_greet
     card = {};
     cards_scroller = {};
 
