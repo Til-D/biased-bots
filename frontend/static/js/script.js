@@ -255,6 +255,11 @@ function setBotResponse(response) {
                 if (response[i].hasOwnProperty("text")) {
                     var BotResponse = '<img class="botAvatar" src="./static/img/sara_avatar.png"/><p class="botMsg">' + response[i].text + '</p><div class="clearfix"></div>';
                     $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
+                    
+                    // redirect to post-study survey if participant finish
+                    if (response[i].text.includes("POST-SURVEY")) {
+                        setTimeout(() => {  window.location.href = "./post-study.html"; }, 10000);
+                    }
                 }
 
                 //check if the response contains "images"

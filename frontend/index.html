@@ -1,113 +1,26 @@
 <html>
 
 <head>
-    <title>Bias Bot</title>
+  <title>Bias Bot</title>
 
-    <!--Let browser know website is optimized for mobile-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:500&display=swap" rel="stylesheet">
-
-    <!--Import Font Awesome Icon Font-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-
-    <!--Import materialize.css-->
-    <link rel="stylesheet" type="text/css" href="static/css/materialize.min.css">
-
-    <!--Main css-->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="stylesheet" type="text/css" href="static/css/survey_style.css">
 </head>
 
 <body>
-    <div class="container">
+  <div>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSevG8zCztFwsVi8TH6TZZEvtO5r2VLmSBLeFwLeJ4J1b9TwJw/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
 
-        <img id="bgimage" src="static/img/bg2.jpg">
-        <img id="logo" src="static/img/logo.png">
+  <div>
+    <p style="color:red;">
+      Please do not click this continue button unless you have submitted your survey
+    </p>
 
-        <div id="instructions">
-            <h1>Bias Bot Study - Affirmative Action</h1> <!-- <h1>Bias Bot Study - Free Speech</h1> -->
-            <p>
-                Welcome! You made it here! The chatbot is located in the right bottom corner. Conversational chatbots are automated software applications designed to assist you or better unserstand you. The Bias Bot on this website will behave as if it is a human and discuss with you about some popular topics across today's internet.
-            </p>
-            <p>
-                Note: Currently the Bias Bot is not mature enough to understand most of English words and sentences. So in order to make it behave as expected, please respond it with commonly used short words or sentences. For example, yes or no, agree or disagree, I guess so or I don't think so.
-            </p>
-            <p>
-                This study is conducted by Tilman Dingler, Benjamin Tag, and Xiuge Chen, researchers at the School of Computing and Information Systems at University of Melbourne, Melbourne, Australia.
-            </p>
-            <p>
-                In case of questions, remarks or concerns you may contact the responsible researcher, Xiuge Chen (xiugec@student.unimelb.edu.au) or the principal investigator (tilman.dingler@unimelb.edu.au).
-            </p>
-        </div>
-
-        <!-- Modal for rendering the charts, declare this if you want to render charts, 
-         else you remove the modal -->
-        <!-- <div id="modal1" class="modal">
-            <canvas id="modal-chart"></canvas>
-        </div> -->
-
-        <!--chatbot widget -->
-        <div class="widget">
-            <div class="chat_header">
-
-                <!--Add the name of the bot here -->
-                <span class="chat_header_title">Infobot</span>
-                <span class="dropdown-trigger" href='#' data-target='dropdown1'>
-                  <i class="material-icons">
-                  more_vert
-                  </i>
-               </span>
-
-                <!-- Dropdown menu-->
-                <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#" id="clear">Clear</a></li>
-                    <li><a href="#" id="restart">Restart</a></li>
-                    <!-- <li><a href="#" id="close">Close</a></li> -->
-                </ul>
-            </div>
-
-            <!--Chatbot contents goes here -->
-            <div class="chats" id="chats">
-                <div class="clearfix"></div>
-
-            </div>
-
-            <!--keypad for user to type the message -->
-            <div class="keypad">
-                <textarea id="userInput" placeholder="Type a message..." class="usrInput"></textarea>
-                <div id="sendButton"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>
-            </div>
-        </div>
-
-        <!--bot profile-->
-        <div class="profile_div" id="profile_div">
-            <img class="imgProfile" src="static/img/botAvatar.png" />
-        </div>
-
-        <!-- Bot pop-up intro -->
-        <!-- <div class="tap-target" data-target="profile_div">
-            <div class="tap-target-content">
-                <h5 class="white-text">Hey there 👋</h5>
-                <p class="white-text">I can help you get started with Rasa and answer your technical questions.</p>
-            </div>
-        </div> -->
-
-    </div>
-
-    <!--JavaScript at end of body for optimized loading-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="static/js/materialize.min.js"></script>
-
-    <!--Main Script -->
-    <script type="text/javascript" src="static/js/script.js"></script>
-
-    <!--Chart.js Script -->
-    <script type="text/javascript" src="static/js/chart.min.js"></script>
-
+    <button onclick="document.location.href='./pre-study.html';">
+      Continue
+    </button>
+  </div>
+    
 </body>
 
 </html>

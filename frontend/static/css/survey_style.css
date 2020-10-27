@@ -1,0 +1,17 @@
+
+button {
+    background-color: #6A4B13;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+div {
+    text-align:center;
+    width:100%;
+}
