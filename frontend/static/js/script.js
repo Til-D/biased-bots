@@ -1,6 +1,23 @@
-const BOT_SERVER = "http://45.113.235.85/"; // "http://115.146.94.173/";// "http://localhost:5005/";
+BOT_SERVER = "http://45.113.235.85:82/"; // "http://45.113.232.76:86/"; //"http://45.113.235.85:88/"; // "http://115.146.94.173/";// "http://localhost:5005/";
 
-console.log('connecting to: ' + BOT_SERVER);
+EXP = getQueryVariable('exp');
+NUM = getQueryVariable('num');
+
+console.log("Recieved Experiment seq: " + EXP);
+console.log("Recieved Experiment index: "+ NUM);
+
+// get query variables
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
 
 //Bot pop-up intro
 document.addEventListener('DOMContentLoaded', function() {
@@ -10,6 +27,20 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() { instancesTap.close(); }, 4000);
 
 });
+
+// randomly suffle string
+String.prototype.shuffle = function () {
+    var a = this.split(""),
+        n = a.length;
+
+    for(var i = n - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+    return a.join("");
+}
 
 //initialization
 $(document).ready(function() {
@@ -33,8 +64,65 @@ $(document).ready(function() {
     $(".profile_div").toggle();
     $(".widget").toggle();
 
+    // randomly generate string if the query string is empty
+    if (EXP === undefined) {
+        EXP = "123456".shuffle();
+        console.log("Updated Experiment seq: " + EXP);
+    }
+
+    if (NUM === undefined) {
+        NUM = "0";
+        console.log("Updated Experiment index: "+ NUM);
+    }
+
+    // determine the experiment number
+    expIndex = parseInt(NUM);
+    expNum = '0';
+
+    if (expIndex <= 5 && expIndex >= 0 && EXP.length == 6) {
+        expNum = EXP.charAt(expIndex);
+    }
+    else {
+        console.error("Can not determine experiment number");
+    }
+    console.log("Experiment number: " + expNum);
+
+    // determine the chat bot
+    switch (expNum) {
+        case '1':
+            BOT_SERVER = "http://45.113.235.85:82/";
+            action_name = "/free_speech_greet";
+            break;
+        case '2':
+            BOT_SERVER = "http://45.113.235.85:82/";
+            action_name = "/aff_action_greet";
+            break;
+        case '3':
+            BOT_SERVER = "http://45.113.235.85:88/";
+            action_name = "/free_speech_greet";
+            break;
+        case '4':
+            BOT_SERVER = "http://45.113.235.85:88/";
+            action_name = "/aff_action_greet";
+            break;
+        case '5':
+            BOT_SERVER = "http://45.113.232.76:86/";
+            action_name = "/free_speech_greet";
+            break;
+        case '6':
+            BOT_SERVER = "http://45.113.232.76:86/";
+            action_name = "/aff_action_greet";
+            break;
+        default:
+            BOT_SERVER = "http://45.113.235.85:82/";
+            action_name = "/free_speech_greet";
+            console.error("Can not determine the chat bot");
+    }
+
+    console.log("connect to: " + BOT_SERVER);
+    console.log("action: " + action_name);
+
     //global variables
-    action_name = "/aff_action_greet"; // free_speech_greet
     card = {};
     cards_scroller = {};
 
@@ -43,6 +131,9 @@ $(document).ready(function() {
     } else {
         user_id = "unknown";
     }
+
+    user_id = "test_" + Math.floor(new Date().getTime()/1000.0).toString();
+
     console.log('user_id: ' + user_id);
 
     //if you want the bot to start the conversation
@@ -258,7 +349,10 @@ function setBotResponse(response) {
                     
                     // redirect to post-study survey if participant finish
                     if (response[i].text.includes("POST-SURVEY")) {
-                        setTimeout(() => {  window.location.href = "./post-study.html"; }, 10000);
+                        expNum = 0;
+                        expNum = parseInt(NUM);
+                        expNum = expNum + 1;
+                        setTimeout(() => {  window.location.href = "./post-study.html?exp=" + EXP + "&num=" + expNum; }, 10000);
                     }
                 }
 
