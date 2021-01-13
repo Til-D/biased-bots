@@ -31,6 +31,6 @@ function nextPage() {
         window.location.href = "./chat-page.html?exp=" + EXP + "&num=" + expNum;
     }
     else {
-        window.location.href = "./thank-you.html";
+        window.location.href = "./post-survey.html";
     }
 }

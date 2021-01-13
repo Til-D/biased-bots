@@ -138,6 +138,12 @@ $(document).ready(function() {
 
     //if you want the bot to start the conversation
     send(action_name);
+
+    // keep cursor in the textbox
+    window.setTimeout(function ()
+    {
+        document.getElementById('userInput').focus();
+    }, 0);
 })
 
 // ========================== restart conversation ========================
@@ -184,7 +190,7 @@ function action_trigger() {
     });
 }
 
-//=====================================	user enter or sends the message =====================
+//=====================================	user enter or sends the message =====================\
 $(".usrInput").on("keyup keypress", function(e) {
     var keyCode = e.keyCode || e.which;
 
@@ -209,6 +215,13 @@ $(".usrInput").on("keyup keypress", function(e) {
             setUserResponse(text);
             send(text);
             e.preventDefault();
+            
+            // keep cursor in the textbox
+            window.setTimeout(function ()
+            {
+                document.getElementById('userInput').focus();
+            }, 0);
+
             return false;
         }
     }
@@ -216,23 +229,32 @@ $(".usrInput").on("keyup keypress", function(e) {
 
 $("#sendButton").on("click", function(e) {
     var text = $(".usrInput").val();
+
     if (text == "" || $.trim(text) == "") {
         e.preventDefault();
         return false;
     } else {
-        //destroy the existing chart
+        //destroy the existing chart, if yu are not using charts, then comment the below lines
+        $('.collapsible').remove();
+        if (typeof chatChart !== 'undefined') { chatChart.destroy(); }
 
-        chatChart.destroy();
         $(".chart-container").remove();
         if (typeof modalChart !== 'undefined') { modalChart.destroy(); }
 
-        $(".suggestions").remove();
         $(".paginated_cards").remove();
+        $(".suggestions").remove();
         $(".quickReplies").remove();
         $(".usrInput").blur();
         setUserResponse(text);
         send(text);
         e.preventDefault();
+        
+        // keep cursor in the textbox
+        window.setTimeout(function ()
+        {
+            document.getElementById('userInput').focus();
+        }, 0);
+
         return false;
     }
 })
@@ -352,7 +374,7 @@ function setBotResponse(response) {
                         expNum = 0;
                         expNum = parseInt(NUM);
                         expNum = expNum + 1;
-                        setTimeout(() => {  window.location.href = "./post-study.html?exp=" + EXP + "&num=" + expNum; }, 10000);
+                        setTimeout(() => {  window.location.href = "./bots-survey.html?exp=" + EXP + "&num=" + expNum; }, 10000);
                     }
                 }
 
