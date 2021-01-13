@@ -81,8 +81,10 @@ $(document).ready(function() {
 
     if (expIndex <= 5 && expIndex >= 0 && EXP.length == 6) {
         expNum = EXP.charAt(expIndex);
+        document.getElementById("progress_text").innerHTML = "<b>Current Progress: " + (expIndex + 1) + "/6</b> (current conversation/conversations in total)";
     }
     else {
+        document.getElementById("progress_text").innerHTML = "Current Progress: invalid progress, please close the study and contact us";
         console.error("Can not determine experiment number");
     }
     console.log("Experiment number: " + expNum);
